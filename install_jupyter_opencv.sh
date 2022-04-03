@@ -14,5 +14,5 @@ pip3 install -U setuptools
 pip install jupyterlab
 pip install opencv-python==3.4.17.63 Pillow matplotlib
 
-# source .venv/bin/activate
+# source ~/JPT-OCV/.venv/bin/activate
 # jupyter-lab
