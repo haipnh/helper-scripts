@@ -75,6 +75,7 @@ mkdir build
 cd build
 
 # there are 3 options to choose. Be patience this step.
+# recommend: option2 (cpu only)
 
 # option 1: install to ~/opencv
 cmake -DBUILD_DOCS=ON \
@@ -133,8 +134,6 @@ cmake -DCMAKE_BUILD_TYPE=RELEASE \
  -D BUILD_SHARED_LIBS=ON \
  -D WITH_QT=OFF \
  -D WITH_GTK=ON \
- -D WITH_VTK=OFF \
- -D WITH_PROTOBUF=OFF \
  -D BUILD_NEW_PYTHON_SUPPORT=ON \
  -D BUILD_opencv_python2=OFF \
  -D BUILD_opencv_python3=ON \
