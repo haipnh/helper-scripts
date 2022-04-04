@@ -190,3 +190,61 @@ cmake -DBUILD_DOCS=ON \
   -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
   ../opencv
 #todo: add cuda support
+
+# install OpenCV-4.2.0
+set OCV-VERSION=4.2.0
+mkdir ~/opencv-$OCV-VERSION
+cd ~/opencv-$OCV-VERSION
+wget wget "https://github.com/opencv/opencv/archive/refs/tags/$OCV-VERSION.zip" -O opencv.zip
+wget "https://github.com/opencv/opencv_contrib/archive/refs/tags/$OCV-VERSION.zip" -O opencv_contrib.zip
+unzip opencv.zip
+mv opencv-$OCV-VERSION opencv
+unzip opencv_contrib.zip
+mv opencv_contrib-$OCV-VERSION opencv_contrib
+
+mkdir opencv/build
+cd opencv/build
+
+source ~/.venv/bin/activate
+
+cmake -DCMAKE_BUILD_TYPE=RELEASE \
+ -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-4.2.0 \
+ -D BUILD_DOCS=ON \
+ -D BUILD_TESTS=ON \
+ -D BUILD_PERF_TESTS=ON \
+ -D BUILD_EXAMPLES=ON \
+ -D INSTALL_C_EXAMPLES=ON \
+ -D INSTALL_PYTHON_EXAMPLES=ON \
+ -D BUILD_opencv_apps=ON \
+ -D WITH_OPENMP=ON \
+ -D WITH_TBB=ON \
+ -D WITH_V4L=ON \
+ -D BUILD_SHARED_LIBS=ON \
+ -D WITH_QT=OFF \
+ -D WITH_GTK=ON \
+ -D BUILD_NEW_PYTHON_SUPPORT=ON \
+ -D BUILD_opencv_python2=OFF \
+ -D BUILD_opencv_python3=ON \
+ -D PYTHON_DEFAULT_EXECUTABLE=~/.venv/bin/python3.8 \
+ -D PYTHON_INCLUDE_DIR=~/.venv/include \
+ -D PYTHON_LIBRARY=~/.venv/lib \
+ -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+ -D BUILD_EXAMPLES=ON \
+ .. 
+
+# make installation path
+sudo -s
+mkdir /usr/local/opencv-4.2.0
+chown -R haipnh /usr/local/opencv-4.2.0
+chgrp -R haipnh /usr/local/opencv-4.2.0
+# make linking library setting
+echo /usr/local/opencv-4.2.0/lib >> /etc/ld.so.conf.d/opencv.conf
+exit 
+
+# build and install
+make install
+
+# update linking library
+sudo ldconfig -v
+
+# now create a resize Eclipse Project
