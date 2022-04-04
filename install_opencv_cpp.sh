@@ -57,8 +57,9 @@ cd $cwd
 python3 -m venv OpenCV-"$cvVersion"-py3
 pip install wheel numpy scipy matplotlib scikit-image scikit-learn ipython 
 pip install dlib
+#todo: arrange the dependencies
 
-
+# download repositories
 mkdir ~/opencv-3.4.17
 cd ~/opencv-3.4.17
 wget wget "https://github.com/opencv/opencv/archive/refs/tags/3.4.17.zip" -O opencv.zip
