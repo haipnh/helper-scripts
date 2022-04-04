@@ -17,8 +17,10 @@ sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgst
 # OpenGL
 sudo apt-get install libgtkglext1 libgtkglext1-dev 
 
-python3 -m pip install --upgrade pip
+sudo apt install python3-vtk7
 
+python3 -m pip install --upgrade pip
+ 
 # from charlie
 cd /usr/include/linux
 sudo ln -s -f ../libv4l1-videodev.h videodev.h
@@ -116,45 +118,32 @@ cmake -DBUILD_DOCS=ON \
   ../opencv
   
 # option2: install to /usr/local/opencv-3.4.17 
-cmake -DBUILD_DOCS=ON \
-  -DBUILD_TESTS=ON \
-  -DBUILD_EXAMPLES=ON \
-  -DBUILD_PERF_TESTS=ON \
-  -DBUILD_opencv_apps=ON \
-  -DENABLE_PROFILING=ON \
-  -DENABLE_COVERAGE=ON \
-  -DBUILD_JASPER=ON \
-  -DBUILD_JPEG=ON \
-  -DBUILD_PNG=ON \
-  -DBUILD_TBB=ON \
-  -DBUILD_TIFF=ON \
-  -DBUILD_ZLIB=ON \
-  -DBUILD_opencv_world=ON \
-  -DINSTALL_C_EXAMPLES=ON \
-  -DINSTALL_PYTHON_EXAMPLES=ON \
-  -DINSTALL_TESTS=ON \
-  -DMKL_USE_SINGLE_DYNAMIC_LIBRARY=ON \
-  -DMKL_WITH_OPENMP=ON \
-  -DMKL_WITH_TBB=ON \
-  -DWITH_OPENGL=ON \
-  -DHAVE_OPENGL=ON \
-  -DWITH_OPENMP=ON \
-  -DWITH_OPENVX=ON \
-  -DWITH_QT=OFF \
-  -DWITH_GTK=ON \
-  -DWITH_TBB=ON \
-  -DWITH_HPX=ON \
-  -DWITH_VA_INTEL=ON \
-  -DBUILD_NEW_PYTHON_SUPPORT=ON \
-  -DBUILD_opencv_python2=OFF \
-  -DBUILD_opencv_python3=ON \
-  -DHAVE_opencv_python3=ON \
-  -DPYTHON_DEFAULT_EXECUTABLE=~/.venv/bin/python3 \
-  -DPYTHON_INCLUDE_DIR=~/.venv/include \
-  -DPYTHON_LIBRARY=~/.venv/lib \
-  -DCMAKE_INSTALL_PREFIX=/usr/local/opencv-3.4.17  \
-  -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
-  ../opencv
+cmake -DCMAKE_BUILD_TYPE=RELEASE \
+ -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-3.4.17 \
+ -D BUILD_DOCS=ON \
+ -D BUILD_TESTS=ON \
+ -D BUILD_PERF_TESTS=ON \
+ -D BUILD_EXAMPLES=ON \
+ -D INSTALL_C_EXAMPLES=ON \
+ -D INSTALL_PYTHON_EXAMPLES=ON \
+ -D BUILD_opencv_apps=ON \
+ -D WITH_OPENMP=ON \
+ -D WITH_TBB=ON \
+ -D WITH_V4L=ON \
+ -D BUILD_SHARED_LIBS=ON \
+ -D WITH_QT=OFF \
+ -D WITH_GTK=ON \
+ -D WITH_VTK=OFF \
+ -D WITH_PROTOBUF=OFF \
+ -D BUILD_NEW_PYTHON_SUPPORT=ON \
+ -D BUILD_opencv_python2=OFF \
+ -D BUILD_opencv_python3=ON \
+ -D PYTHON_DEFAULT_EXECUTABLE=~/.venv/bin/python3.8 \
+ -D PYTHON_INCLUDE_DIR=~/.venv/include \
+ -D PYTHON_LIBRARY=~/.venv/lib \
+ -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
+ -D BUILD_EXAMPLES=ON \
+ ../opencv
 # todo: add opengl support 
  
  # option3: install with CUDA-enabled and Python3 virtual env.
