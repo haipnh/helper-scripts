@@ -208,6 +208,7 @@ cd opencv/build
 
 source ~/.venv/bin/activate
 
+### OpenCV-4.2.0: C++, Python2, Python3, OpenMP & TBB, docs, examples, tests ==> Not working
 cmake -DCMAKE_BUILD_TYPE=RELEASE \
  -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-4.2.0 \
  -D BUILD_DOCS=ON \
@@ -233,19 +234,35 @@ cmake -DCMAKE_BUILD_TYPE=RELEASE \
  -D BUILD_EXAMPLES=ON \
  .. 
 
-# make installation path
-sudo -s
-mkdir /usr/local/opencv-4.2.0
-chown -R haipnh /usr/local/opencv-4.2.0
-chgrp -R haipnh /usr/local/opencv-4.2.0
-# make linking library setting
-echo /usr/local/opencv-4.2.0/lib >> /etc/ld.so.conf.d/opencv.conf
-exit 
+### OpenCV-3.4.2: C++ only, pthreads, no docs, no examples, no tests
+cmake -DCMAKE_BUILD_TYPE=RELEASE \
+ -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-3.4.2 \
+ -D BUILD_DOCS=OFF \
+ -D BUILD_TESTS=OFF \
+ -D BUILD_PERF_TESTS=OFF \
+ -D BUILD_opencv_apps=OFF \
+ -D WITH_OPENMP=OFF \
+ -D WITH_TBB=OFF \
+ -D WITH_V4L=ON \
+ -D BUILD_SHARED_LIBS=ON \
+ -D WITH_QT=OFF \
+ -D WITH_GTK=ON \
+ -D BUILD_opencv_java=OFF \
+ -D BUILD_opencv_python2=OFF \
+ -D BUILD_opencv_python3=OFF \
+ -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
+ ../opencv
+make -j16
 
 # build and install
-make install
+sudo make install
+
+sudo -s
+# make linking library setting
+echo /usr/local/opencv-3.4.2/lib >> /etc/ld.so.conf.d/opencv.conf
+exit 
 
 # update linking library
-sudo ldconfig -v
+sudo ldconfig
 
 # now create a resize Eclipse Project
