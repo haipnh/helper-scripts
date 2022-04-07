@@ -62,14 +62,15 @@ pip install dlib
 #todo: arrange the dependencies
 
 # download repositories
-mkdir ~/opencv-3.4.17
-cd ~/opencv-3.4.17
-wget wget "https://github.com/opencv/opencv/archive/refs/tags/3.4.17.zip" -O opencv.zip
-wget "https://github.com/opencv/opencv_contrib/archive/refs/tags/3.4.17.zip" -O opencv_contrib.zip
+export OCV_VER=3.4.2
+mkdir ~/opencv-$OCV_VER
+cd ~/opencv-$OCV_VER
+wget wget "https://github.com/opencv/opencv/archive/refs/tags/$OCV_VER.zip" -O opencv.zip
+wget "https://github.com/opencv/opencv_contrib/archive/refs/tags/$OCV_VER.zip" -O opencv_contrib.zip
 unzip opencv.zip
-mv opencv-3.4.17 opencv
+mv opencv-$OCV_VER opencv
 unzip opencv_contrib.zip
-mv opencv_contrib-3.4.17 opencv_contrib
+mv opencv_contrib-$OCV_VER opencv_contrib
 
 mkdir build
 cd build
@@ -118,9 +119,9 @@ cmake -DBUILD_DOCS=ON \
   -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
   ../opencv
   
-# option2: install to /usr/local/opencv-3.4.17 
+# option2: install to /usr/local/opencv-$OCV_VER 
 cmake -DCMAKE_BUILD_TYPE=RELEASE \
- -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-3.4.17 \
+ -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-$OCV_VER \
  -D BUILD_DOCS=ON \
  -D BUILD_TESTS=ON \
  -D BUILD_PERF_TESTS=ON \
