@@ -54,3 +54,49 @@ exit
 sudo ldconfig
 
 # now create a resize Eclipse Project
+
+
+
+# Vitis-Library v2021.2-update1
+# OpenCV-4.4.0
+
+export OCV_VER=4.4.0
+mkdir ~/opencv-$OCV_VER
+cd ~/opencv-$OCV_VER
+wget wget "https://github.com/opencv/opencv/archive/refs/tags/$OCV_VER.zip" -O opencv.zip
+wget "https://github.com/opencv/opencv_contrib/archive/refs/tags/$OCV_VER.zip" -O opencv_contrib.zip
+unzip opencv.zip
+mv opencv-$OCV_VER opencv
+unzip opencv_contrib.zip
+mv opencv_contrib-$OCV_VER opencv_contrib
+
+mkdir build
+cd build
+
+export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+  -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-$OCV_VER \
+  -D CMAKE_CXX_COMPILER=/tools/Xilinx/Vivado/2021.2/tps/lnx64/gcc-6.2.0/bin/g++ \
+  -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
+  -D WITH_V4L=ON \
+  -D BUILD_TESTS=OFF \
+  -D BUILD_ZLIB=ON \
+  -D BUILD_JPEG=ON \
+  -D WITH_JPEG=ON \
+  -D WITH_PNG=ON \
+  -D BUILD_EXAMPLES=OFF \
+  -D INSTALL_C_EXAMPLES=OFF \
+  -D INSTALL_PYTHON_EXAMPLES=OFF \
+  -D WITH_OPENEXR=OFF \
+  -D BUILD_OPENEXR=OFF \
+  ../opencv
+make -j$(nproc)
+sudo make install
+
+# make linking library setting
+sudo -s
+rm -f /etc/ld.so.conf.d/opencv.conf
+echo /usr/local/opencv-$OCV_VER/lib >> /etc/ld.so.conf.d/opencv.conf
+exit
+
+sudo ldconfig
