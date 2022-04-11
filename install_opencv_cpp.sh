@@ -12,7 +12,7 @@ libavresample-dev x264 v4l-utils libprotobuf-dev protobuf-compiler libgoogle-glo
 export OCV_VER=3.4.2
 mkdir ~/opencv-$OCV_VER
 cd ~/opencv-$OCV_VER
-wget wget "https://github.com/opencv/opencv/archive/refs/tags/$OCV_VER.zip" -O opencv.zip
+wget "https://github.com/opencv/opencv/archive/refs/tags/$OCV_VER.zip" -O opencv.zip
 wget "https://github.com/opencv/opencv_contrib/archive/refs/tags/$OCV_VER.zip" -O opencv_contrib.zip
 unzip opencv.zip
 mv opencv-$OCV_VER opencv
@@ -63,7 +63,7 @@ sudo ldconfig
 export OCV_VER=4.4.0
 mkdir ~/opencv-$OCV_VER
 cd ~/opencv-$OCV_VER
-wget wget "https://github.com/opencv/opencv/archive/refs/tags/$OCV_VER.zip" -O opencv.zip
+wget "https://github.com/opencv/opencv/archive/refs/tags/$OCV_VER.zip" -O opencv.zip
 wget "https://github.com/opencv/opencv_contrib/archive/refs/tags/$OCV_VER.zip" -O opencv_contrib.zip
 unzip opencv.zip
 mv opencv-$OCV_VER opencv
