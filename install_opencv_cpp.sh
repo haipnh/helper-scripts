@@ -25,25 +25,30 @@ mkdir build
 cd build
 
 ### OpenCV-3.4.2: C++ only, GUI with GTK, pthreads, no docs, no examples, no tests
-cmake -DCMAKE_BUILD_TYPE=RELEASE \
- -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-3.4.2 \
- -D BUILD_DOCS=OFF \
- -D BUILD_TESTS=OFF \
- -D BUILD_PERF_TESTS=OFF \
- -D BUILD_opencv_apps=OFF \
- -D WITH_OPENMP=OFF \
- -D WITH_TBB=OFF \
- -D WITH_V4L=ON \
- -D BUILD_SHARED_LIBS=ON \
- -D WITH_QT=OFF \
- -D WITH_GTK=ON \
- -D BUILD_opencv_java=OFF \
- -D BUILD_opencv_python2=OFF \
- -D BUILD_opencv_python3=OFF \
- -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
- ../opencv
-make -j$(nproc) 
-
+export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+  -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-$OCV_VER \
+  -D CMAKE_CXX_COMPILER=/home/haipnh/tools/Xilinx/Vivado/2020.2/tps/lnx64/gcc-6.2.0/bin/g++ \
+  -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
+  -D WITH_V4L=ON \
+  -D BUILD_TESTS=OFF \
+  -D BUILD_ZLIB=ON \
+  -D BUILD_JPEG=ON \
+  -D WITH_JPEG=ON \
+  -D WITH_PNG=ON \
+  -D WITH_QT=OFF \
+  -D WITH_GTK=ON \
+  -D BUILD_EXAMPLES=OFF \
+  -D INSTALL_C_EXAMPLES=OFF \
+  -D INSTALL_PYTHON_EXAMPLES=OFF \
+  -D WITH_OPENEXR=OFF \
+  -D BUILD_OPENEXR=OFF \
+  -D BUILD_opencv_java=OFF \
+  -D BUILD_opencv_python2=OFF \
+  -D BUILD_opencv_python3=OFF \
+  ../opencv
+  
+make -j$(nproc)
 # build and install
 sudo make install
 
