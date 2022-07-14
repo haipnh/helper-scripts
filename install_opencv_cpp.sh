@@ -54,7 +54,7 @@ sudo make install
 
 sudo -s
 # make linking library setting
-echo /usr/local/opencv-3.4.2/lib >> /etc/ld.so.conf.d/opencv.conf
+echo /usr/local/opencv-$OCV_VER/lib >> /etc/ld.so.conf.d/opencv-$OCV_VER.conf
 exit 
 
 # update linking library
@@ -109,7 +109,7 @@ sudo make install
 # make linking library setting
 sudo -s
 rm -f /etc/ld.so.conf.d/opencv.conf
-echo /usr/local/opencv-$OCV_VER/lib >> /etc/ld.so.conf.d/opencv.conf
+echo /usr/local/opencv-$OCV_VER/lib >> /etc/ld.so.conf.d/opencv-$OCV_VER.conf
 exit
 
 sudo ldconfig
