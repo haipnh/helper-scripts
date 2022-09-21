@@ -113,3 +113,47 @@ echo /usr/local/opencv-$OCV_VER/lib >> /etc/ld.so.conf.d/opencv-$OCV_VER.conf
 exit
 
 sudo ldconfig
+
+#############################################################################################################
+### Test OpenCV: Read and Write an image                                                                  ###
+#############################################################################################################
+
+cd ~
+mkdir test_opencv && cd test_opencv
+wget https://raw.githubusercontent.com/opencv/opencv_contrib/master/samples/data/corridor.jpg -O corridor.jpg
+
+vi test_opencv.cpp
+
+# >>> Paste these lines of code
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include <iostream>
+
+using namespace cv;
+
+int main()
+{
+  std::string image_path = "corridor.jpg";
+  Mat img = imread(image_path, IMREAD_COLOR);
+  if(img.empty())
+  {
+    std::cout << "Could not read the image: " << image_path << std::endl;
+    return 1;
+  }
+  imshow("Display window", img);
+  int k = waitKey(0); // Wait for a keystroke in the window
+  if(k == 's')
+  {
+    imwrite("corridor.png", img);
+  }
+  return 0;
+}
+# <<< Paste these lines of code
+
+# Compile
+g++ ./test_opencv.cpp -o test_opencv -std=c++11 -I/usr/local/opencv-4.4.0/include -lopencv_imgcodecs -lopencv_core -lopencv_highgui
+
+# Run test
+export LD_LIBRARY_PATH="/usr/lib64/:$LD_LIBRARY_PATH"
+./test_opencv
