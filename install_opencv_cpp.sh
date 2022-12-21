@@ -69,6 +69,19 @@ sudo ldconfig
 # Vitis-Library v2021.2-update1
 # OpenCV-4.4.0
 
+# Install CMake >= 3.5.1
+sudo apt remove cmake
+mkdir -p ~/tools/cmake/3.25.1
+cd ~/tools/cmake/3.25.1
+wget "https://github.com/Kitware/CMake/releases/download/v3.25.1/cmake-3.25.1-linux-x86_64.sh" 
+chmod +x cmake-3.25.1-linux-x86_64.sh
+sudo cp cmake-3.25.1-linux-x86_64.sh /opt
+cd /opt
+sudo ./cmake-3.25.1-linux-x86_64.sh
+sudo ln -s /opt/cmake-3.25.1-linux-x86_64/bin/* /usr/local/bin
+cmake --version
+
+# Download, build and install OpenCV-4.4.0
 export OCV_VER=4.4.0
 mkdir ~/opencv-$OCV_VER
 cd ~/opencv-$OCV_VER
@@ -83,7 +96,7 @@ mkdir build
 cd build
 
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
-cmake -D CMAKE_BUILD_TYPE=RELEASE \
+/usr/local/bin/cmake -D CMAKE_BUILD_TYPE=RELEASE \
   -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-$OCV_VER \
   -D CMAKE_CXX_COMPILER=/tools/Xilinx/Vivado/2021.2/tps/lnx64/gcc-6.2.0/bin/g++ \
   -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
