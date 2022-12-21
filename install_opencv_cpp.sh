@@ -10,6 +10,8 @@ gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0
 libgtkglext1-dev libatlas-base-dev libfaac-dev libmp3lame-dev libtheora-dev libvorbis-dev libopencore-amrnb-dev libopencore-amrwb-dev \
 libavresample-dev x264 v4l-utils libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgflags-dev libgphoto2-dev libhdf5-dev libhdf5-serial-dev
 
+sudo apt-get install gcc-multilib # added 22/12/21
+
 # download repositories
 export OCV_VER=3.4.2
 mkdir ~/opencv-$OCV_VER
