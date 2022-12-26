@@ -30,7 +30,6 @@ cd build
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
   -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-$OCV_VER \
-  -D CMAKE_CXX_COMPILER=/home/haipnh/tools/Xilinx/Vivado/2020.2/tps/lnx64/gcc-6.2.0/bin/g++ \
   -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
   -D WITH_V4L=ON \
   -D BUILD_TESTS=OFF \
@@ -98,7 +97,6 @@ cd build
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
 /usr/local/bin/cmake -D CMAKE_BUILD_TYPE=RELEASE \
   -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-$OCV_VER \
-  -D CMAKE_CXX_COMPILER=/tools/Xilinx/Vivado/2021.2/tps/lnx64/gcc-6.2.0/bin/g++ \
   -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
   -D WITH_V4L=ON \
   -D BUILD_TESTS=OFF \
