@@ -84,7 +84,7 @@ echo /usr/local/opencv-$OCV_VER/lib >> /etc/ld.so.conf.d/opencv-$OCV_VER.conf
 exit 
 
 # update linking library
-sudo ldconfig
+sudo ldconfig -v
 
 # now create a resize Eclipse Project
 
@@ -150,7 +150,7 @@ rm -f /etc/ld.so.conf.d/opencv.conf
 echo /usr/local/opencv-$OCV_VER/lib >> /etc/ld.so.conf.d/opencv-$OCV_VER.conf
 exit
 
-sudo ldconfig
+sudo ldconfig -v
 
 #############################################################################################################
 ### Test OpenCV: Read and Write an image                                                                  ###
