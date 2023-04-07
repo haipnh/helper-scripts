@@ -152,6 +152,29 @@ export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
   -D BUILD_opencv_python3=OFF \
   ../opencv
 
+# use Vivado 2022.1
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+  -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-$OCV_VER \
+  -D CMAKE_CXX_COMPILER=/tools/Xilinx/Vivado/2022.1/tps/lnx64/gcc-6.2.0/bin/g++ \
+  -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
+  -D WITH_V4L=ON \
+  -D BUILD_TESTS=OFF \
+  -D BUILD_ZLIB=ON \
+  -D BUILD_JPEG=ON \
+  -D WITH_JPEG=ON \
+  -D WITH_PNG=ON \
+  -D WITH_QT=OFF \
+  -D WITH_GTK=ON \
+  -D BUILD_EXAMPLES=OFF \
+  -D INSTALL_C_EXAMPLES=OFF \
+  -D INSTALL_PYTHON_EXAMPLES=OFF \
+  -D WITH_OPENEXR=OFF \
+  -D BUILD_OPENEXR=OFF \
+  -D BUILD_opencv_java=OFF \
+  -D BUILD_opencv_python2=OFF \
+  -D BUILD_opencv_python3=OFF \
+  ../opencv
+
 make -j$(nproc)
 sudo make install
 
