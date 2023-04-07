@@ -196,7 +196,7 @@ cd ~
 mkdir test_opencv && cd test_opencv
 wget https://raw.githubusercontent.com/opencv/opencv_contrib/master/samples/data/corridor.jpg -O corridor.jpg
 
-vi test_opencv.cpp
+vi main.cpp
 
 # >>> Paste these lines of code
 #include <opencv2/core.hpp>
@@ -226,7 +226,7 @@ int main()
 # <<< Paste these lines of code
 
 # Compile
-g++ ./test_opencv.cpp -o test_opencv -std=c++11 -I/usr/local/opencv-4.4.0/include -lopencv_imgcodecs -lopencv_core -lopencv_highgui
+g++ ./main.cpp -o main -std=c++11 -I/usr/local/opencv-4.4.0/include/opencv4 -lopencv_imgcodecs -lopencv_core -lopencv_highgui
 
 # Run test
 export LD_LIBRARY_PATH="/usr/lib64/:$LD_LIBRARY_PATH"
