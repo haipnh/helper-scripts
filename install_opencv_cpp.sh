@@ -12,6 +12,17 @@ libavresample-dev x264 v4l-utils libprotobuf-dev protobuf-compiler libgoogle-glo
 
 sudo apt-get install gcc-multilib # added 22/12/21
 
+# Ubuntu 22.04
+sudo apt install -y build-essential cmake wget unzip checkinstall pkg-config yasm gfortran software-properties-common \
+jasper ffmpeg python3-minimal python3 python3-pip doxygen libeigen3-dev libgtk2.0-dev libgtk-3-dev libjpeg8-dev libpng-dev \
+libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libv4l-dev \
+libtbb2 libtbb-dev libjpeg-dev libxvidcore-dev libx264-dev \
+libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base \
+gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav \
+gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-pulseaudio libgtkglext1 \
+libgtkglext1-dev libatlas-base-dev libfaac-dev libmp3lame-dev libtheora-dev libvorbis-dev libopencore-amrnb-dev libopencore-amrwb-dev \
+x264 v4l-utils libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgflags-dev libgphoto2-dev libhdf5-dev libhdf5-serial-dev
+
 # download repositories
 export OCV_VER=3.4.2
 mkdir ~/opencv-$OCV_VER
