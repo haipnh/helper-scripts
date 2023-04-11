@@ -25,8 +25,7 @@ x264 v4l-utils libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgflags-de
 
 # download repositories
 export OCV_VER=3.4.2
-mkdir ~/opencv-$OCV_VER
-cd ~/opencv-$OCV_VER
+mkdir ~/opencv-$OCV_VER && cd ~/opencv-$OCV_VER
 wget "https://github.com/opencv/opencv/archive/refs/tags/$OCV_VER.zip" -O opencv.zip
 wget "https://github.com/opencv/opencv_contrib/archive/refs/tags/$OCV_VER.zip" -O opencv_contrib.zip
 unzip opencv.zip
@@ -34,8 +33,7 @@ mv opencv-$OCV_VER opencv
 unzip opencv_contrib.zip
 mv opencv_contrib-$OCV_VER opencv_contrib
 
-mkdir build
-cd build
+mkdir build && cd build
 
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
 ### OpenCV-3.4.2: C++ only, GUI with GTK, pthreads, no docs, no examples, no tests
@@ -100,11 +98,10 @@ sudo ldconfig -v
 
 # now create a resize Eclipse Project
 
-
-
 # Vitis-Library v2021.2-update1
 # OpenCV-4.4.0
 
+# If not upgrade Ubuntu-18.04.4 to newer version, then
 # Install CMake >= 3.5.1
 sudo apt remove cmake
 mkdir -p ~/tools/cmake/3.25.1
@@ -119,8 +116,7 @@ cmake --version
 
 # Download, build and install OpenCV-4.4.0
 export OCV_VER=4.4.0
-mkdir ~/opencv-$OCV_VER
-cd ~/opencv-$OCV_VER
+mkdir ~/opencv-$OCV_VER && cd ~/opencv-$OCV_VER
 wget "https://github.com/opencv/opencv/archive/refs/tags/$OCV_VER.zip" -O opencv.zip
 wget "https://github.com/opencv/opencv_contrib/archive/refs/tags/$OCV_VER.zip" -O opencv_contrib.zip
 unzip opencv.zip
@@ -128,8 +124,7 @@ mv opencv-$OCV_VER opencv
 unzip opencv_contrib.zip
 mv opencv_contrib-$OCV_VER opencv_contrib
 
-mkdir build
-cd build
+mkdir build && cd build
 
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
 /usr/local/bin/cmake -D CMAKE_BUILD_TYPE=RELEASE \
@@ -226,7 +221,7 @@ int main()
 # <<< Paste these lines of code
 
 # Compile
-g++ ./main.cpp -o main -std=c++11 -I/usr/local/opencv-4.4.0/include/opencv4 -lopencv_imgcodecs -lopencv_core -lopencv_highgui
+g++ ./main.cpp -o main -std=c++11 -I/usr/local/opencv-4.4.0/include/opencv4 -L/usr/local/opencv-4.4.0/lib -lopencv_imgcodecs -lopencv_core -lopencv_highgui
 
 # Run test
 #export LD_LIBRARY_PATH="/usr/lib64/:$LD_LIBRARY_PATH"
