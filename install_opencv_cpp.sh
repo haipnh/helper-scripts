@@ -225,4 +225,4 @@ g++ ./main.cpp -o main -std=c++11 -I/usr/local/opencv-4.4.0/include/opencv4 -L/u
 
 # Run test
 #export LD_LIBRARY_PATH="/usr/lib64/:$LD_LIBRARY_PATH"
-./test_opencv
+./main
