@@ -93,7 +93,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 
 make -j$(nproc)
 # build and install
-sudo make install
+sudo make install # sudo make uninstall
 
 # make linking library setting
 if [ ! -d "/etc/ld.so.conf.d/" ]
@@ -220,7 +220,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
   ../opencv
 
 make -j$(nproc)
-sudo make install
+sudo make install # sudo make uninstall
 
 # make linking library setting
 if [ ! -d "/etc/ld.so.conf.d/" ]
