@@ -73,6 +73,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
   -D WITH_PNG=ON \
   -D WITH_QT=OFF \
   -D WITH_GTK=ON \
+  -D WITH_GSTREAMER=ON \
   -D BUILD_EXAMPLES=OFF \
   -D INSTALL_C_EXAMPLES=OFF \
   -D INSTALL_PYTHON_EXAMPLES=OFF \
@@ -80,7 +81,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
   -D BUILD_OPENEXR=OFF \
   -D BUILD_opencv_java=OFF \
   -D BUILD_opencv_python2=OFF \
-  -D BUILD_opencv_python3=OFF \
+  -D BUILD_opencv_python3=ON \
   ../opencv
 
 make -j$(nproc)
