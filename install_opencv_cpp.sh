@@ -149,6 +149,7 @@ mv opencv_contrib-$OCV_VER opencv_contrib
 mkdir build && cd build
 
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
+
 /usr/local/bin/cmake -D CMAKE_BUILD_TYPE=RELEASE \
   -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-$OCV_VER \
   -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
@@ -168,7 +169,31 @@ export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
   -D BUILD_OPENEXR=OFF \
   -D BUILD_opencv_java=OFF \
   -D BUILD_opencv_python2=OFF \
+  -D BUILD_opencv_python3=OFF \
+  ../opencv
+
+# Python3 binding
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+  -D CMAKE_INSTALL_PREFIX=/usr/local/opencv-$OCV_VER \
+  -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
+  -D WITH_V4L=ON \
+  -D BUILD_TESTS=OFF \
+  -D BUILD_ZLIB=ON \
+  -D BUILD_JPEG=ON \
+  -D WITH_JPEG=ON \
+  -D WITH_PNG=ON \
+  -D WITH_QT=OFF \
+  -D WITH_GTK=ON \
+  -D WITH_GSTREAMER=ON \
+  -D BUILD_EXAMPLES=OFF \
+  -D INSTALL_C_EXAMPLES=OFF \
+  -D INSTALL_PYTHON_EXAMPLES=OFF \
+  -D WITH_OPENEXR=OFF \
+  -D BUILD_OPENEXR=OFF \
+  -D BUILD_opencv_java=OFF \
+  -D BUILD_opencv_python2=OFF \
   -D BUILD_opencv_python3=ON \
+  -D PYTHON3_PACKAGES_PATH=/usr/lib/python3/dist-packages \
   ../opencv
 
 # use Vivado 2022.1
