@@ -1,3 +1,10 @@
+# Clean-up before installation
+pip uninstall opencv-python opencv-contrib-python
+sudo apt remove libopencv-dev python3-opencv
+sudo apt remove libjpeg-dev libpng-dev libtiff-dev
+sudo apt autoremove
+
+# Setup repo
 sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
 
 sudo apt install -y build-essential cmake wget unzip checkinstall pkg-config yasm gfortran software-properties-common \
