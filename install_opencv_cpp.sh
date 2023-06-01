@@ -153,6 +153,7 @@ export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
   -D WITH_PNG=ON \
   -D WITH_QT=OFF \
   -D WITH_GTK=ON \
+  -D WITH_GSTREAMER=ON \
   -D BUILD_EXAMPLES=OFF \
   -D INSTALL_C_EXAMPLES=OFF \
   -D INSTALL_PYTHON_EXAMPLES=OFF \
@@ -160,7 +161,7 @@ export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
   -D BUILD_OPENEXR=OFF \
   -D BUILD_opencv_java=OFF \
   -D BUILD_opencv_python2=OFF \
-  -D BUILD_opencv_python3=OFF \
+  -D BUILD_opencv_python3=ON \
   ../opencv
 
 # use Vivado 2022.1
