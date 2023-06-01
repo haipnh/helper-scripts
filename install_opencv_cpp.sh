@@ -117,6 +117,17 @@ sudo ./cmake-3.25.1-linux-x86_64.sh
 sudo ln -s /opt/cmake-3.25.1-linux-x86_64/bin/* /usr/local/bin
 cmake --version
 
+# Ubuntu 22.04 
+# Gstreamer
+sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+# fix dependencies
+sudo apt-get install libgstreamer-plugins-bad1.0-0=1.20.1-1ubuntu2
+sudo apt-get install libgstreamer-plugins-bad1.0-dev
+# install plugins
+sudo apt-get install gstreamer1.0-libav
+sudo apt-get install gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad gstreamer1.0-plugins-good
+
+
 # Download, build and install OpenCV-4.4.0
 export OCV_VER=4.4.0
 mkdir ~/opencv-$OCV_VER && cd ~/opencv-$OCV_VER
