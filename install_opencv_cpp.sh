@@ -191,6 +191,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
   -D WITH_OPENEXR=OFF \
   -D BUILD_OPENEXR=OFF \
   -D BUILD_opencv_java=OFF \
+  -D PYTHON_DEFAULT_EXECUTABLE=python3 \
   -D BUILD_opencv_python2=OFF \
   -D BUILD_opencv_python3=ON \
   -D PYTHON3_PACKAGES_PATH=/usr/lib/python3/dist-packages \
