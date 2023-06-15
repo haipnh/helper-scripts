@@ -56,13 +56,9 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 make -j$(nproc)
 sudo make install # sudo make uninstall
 
-# make linking library setting
-if [ ! -d "/etc/ld.so.conf.d/" ]
-then
-    sudo mkdir -p /etc/ld.so.conf.d/ 
-fi
-sudo echo '/usr/local/opencv-'$OCV_VER'/lib' > /etc/ld.so.conf.d/opencv-$OCV_VER.conf
-exit
+## Config linking libraries
+sudo mkdir -p /etc/ld.so.conf.d/ 
+sudo echo '/usr/local/opencv-4.4.0/lib' > /etc/ld.so.conf.d/opencv-4.4.0.conf
 sudo ldconfig -v
 
 ################################################################################
@@ -120,8 +116,14 @@ vi main.py
 
 # >>> Paste these lines of code
 ################################################################################
+import cv2
 
 
-
+img = cv2.imread('corridor.jpg')
+cv2.imshow('Test', img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 ################################################################################
 # <<< Paste these lines of code
+
+python3 main.py
