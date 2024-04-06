@@ -57,11 +57,10 @@ make -j$(nproc)
 sudo make install
 
 # make linking library setting
-if [ ! -d "/etc/ld.so.conf.d/" ]
-then
-    sudo mkdir -p /etc/ld.so.conf.d/ 
-fi
-sudo echo '/usr/local/opencv-'$OCV_VER'/lib' > /etc/ld.so.conf.d/opencv-$OCV_VER.conf
+sudo mkdir -p /etc/ld.so.conf.d/
+sudo -s
+export OCV_VER=4.4.0
+echo '/usr/local/opencv-'$OCV_VER'/lib' > /etc/ld.so.conf.d/opencv-$OCV_VER.conf
 exit
 sudo ldconfig -v
 
